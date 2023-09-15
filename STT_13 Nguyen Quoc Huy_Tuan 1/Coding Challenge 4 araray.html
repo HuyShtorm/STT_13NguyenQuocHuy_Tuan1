@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Challenge #4</title>
+</head>
+
+<body>
+    <script>
+        // Test data
+        const dogs = [{
+            weight: 22,
+            curFood: 250,
+            owners: ["Alice", "Bob"]
+        }, {
+            weight: 8,
+            curFood: 200,
+            owners: ["Matilda"]
+        }, {
+            weight: 13,
+            curFood: 275,
+            owners: ["Sarah", "John"]
+        }, {
+            weight: 32,
+            curFood: 340,
+            owners: ["Michael"]
+        }, ];
+
+        // 1. Calculate recommended food portion for each dog
+        dogs.forEach((dog) => {
+            dog.recommendedFood = Math.trunc(dog.weight ** 0.75 * 28);
+        });
+
+        // 2. Find Sarah's dog and log if it's eating too much or too little
+        const sarahDog = dogs.find((dog) => dog.owners.includes("Sarah"));
+        console.log(
+            `Sarah's dog is eating ${
+    sarahDog.recommendedFood < sarahDog.curFood ? "too much" : "too little"
+  }`
+        );
+
+        // 3. Create arrays of owners with dogs that eat too much or too little
+        const ownersEatTooMuch = dogs
+            .filter((dog) => dog.curFood > dog.recommendedFood)
+            .flatMap((dog) => dog.owners);
+
+        const ownersEatTooLittle = dogs
+            .filter((dog) => dog.curFood < dog.recommendedFood)
+            .flatMap((dog) => dog.owners);
+
+        // 4. Log owners of dogs that eat too much or too little
+        console.log(`${ownersEatTooMuch.join(" and ")}'s dogs eat too much!`);
+        console.log(`${ownersEatTooLittle.join(" and ")}'s dogs eat too little!`);
+
+        // 5. Check if any dog eats exactly the recommended portion
+        const anyDogEatsRecommended = dogs.some(
+            (dog) => dog.curFood === dog.recommendedFood
+        );
+        console.log(`Any dog eats exactly the recommended portion: ${anyDogEatsRecommended}`);
+
+        // 6. Check if any dog eats an okay amount of food
+        const anyDogEatsOkay = dogs.some(
+            (dog) =>
+            dog.curFood >= dog.recommendedFood * 0.9 &&
+            dog.curFood <= dog.recommendedFood * 1.1
+        );
+        console.log(`Any dog eats an okay amount of food: ${anyDogEatsOkay}`);
+
+        // 7. Create an array of dogs that eat an okay amount of food
+        const dogsEatOkay = dogs.filter(
+            (dog) =>
+            dog.curFood >= dog.recommendedFood * 0.9 &&
+            dog.curFood <= dog.recommendedFood * 1.1
+        );
+
+        // 8. Create a shallow copy of 'dogs' and sort it by recommended food portion
+        const dogsSortedByRecommended = dogs.slice().sort((a, b) =>
+            a.recommendedFood > b.recommendedFood ? 1 : -1
+        );
+
+        console.log(dogsSortedByRecommended);
+    </script>
+</body>
+
+</html>

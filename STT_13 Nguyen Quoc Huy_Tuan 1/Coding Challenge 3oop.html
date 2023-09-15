@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Challenge #3</title>
+</head>
+
+<body>
+    <script>
+        // 1. Create an ES6 class 'CarCl'
+        class CarCl {
+            constructor(make, speed) {
+                this.make = make;
+                this.speed = speed;
+            }
+
+            // 2. Add a getter 'speedUS' to return speed in mi/h
+            get speedUS() {
+                return this.speed / 1.6;
+            }
+
+            // 3. Add a setter 'speedUS' to set speed in mi/h (convert to km/h)
+            set speedUS(speedUS) {
+                this.speed = speedUS * 1.6;
+            }
+
+            // 4. 'accelerate' method
+            accelerate() {
+                this.speed += 10;
+                console.log(`${this.make} is now going at ${this.speed} km/h.`);
+            }
+
+            // 5. 'brake' method
+            brake() {
+                this.speed -= 5;
+                console.log(`${this.make} is now going at ${this.speed} km/h.`);
+            }
+        }
+
+        // 6. Create a new car and experiment with methods and setter/getter
+        const car1 = new CarCl('Ford', 120);
+        console.log(`Data car 1: '${car1.make}' going at ${car1.speed} km/h`);
+
+        car1.accelerate();
+        car1.brake();
+
+        console.log(`Current speed in mi/h: ${car1.speedUS}`);
+        car1.speedUS = 75; // Setting speed in mi/h
+        console.log(`Updated speed in mi/h: ${car1.speedUS}`);
+        console.log(`Updated speed in km/h: ${car1.speed}`);
+    </script>
+</body>
+
+</html>
