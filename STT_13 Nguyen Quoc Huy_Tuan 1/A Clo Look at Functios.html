@@ -13,12 +13,12 @@
         const poll = {
             question: 'What is your favourite programming language?',
             options: ['JavaScript', 'Python', 'Rust', 'C++'],
-            answers: new Array(4).fill(0), // Initialize answers array with zeros
+            answers: new Array(4).fill(0),
 
             registerNewAnswer: function() {
                 const answer = prompt(`${this.question}\n${this.options.join('\n')}\n(Write option number)`);
 
-                // Check if the input is a number and within the valid range
+      
                 if (!isNaN(answer) && answer >= 0 && answer < this.options.length) {
                     this.answers[answer]++;
                 } else {
@@ -39,7 +39,7 @@
 
         document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll));
 
-        // Test data for bonus
+     
         const data1 = [5, 2, 3];
         const data2 = [1, 5, 3, 9, 6, 1];
 

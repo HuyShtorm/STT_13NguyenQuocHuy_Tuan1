@@ -10,7 +10,7 @@
 
 <body>
     <script>
-        // Data from the web service about the game
+
         const game = {
             team1: 'Bayern Munich',
             team2: 'Borussia Dortmund',
@@ -28,23 +28,22 @@
             }
         };
 
-        // 1. Loop over the game.scored array and print each player name with the goal number
+     
         game.scored.forEach((player, index) => {
             console.log(`Goal ${index + 1}: ${player}`);
         });
 
-        // 2. Calculate the average odd
         const odds = Object.values(game.odds);
         const averageOdd = odds.reduce((acc, odd) => acc + odd, 0) / odds.length;
         console.log(`Average odd: ${averageOdd.toFixed(2)}`);
 
-        // 3. Print the odds in a nice formatted way
+        
         for (const [team, odd] of Object.entries(game.odds)) {
             const teamName = game[team];
             console.log(`Odd of victory ${teamName}: ${odd}`);
         }
 
-        // 4. Bonus: Create an object 'scorers' with player names and the number of goals they scored
+      
         const scorers = {};
         game.scored.forEach((player) => {
             scorers[player] = (scorers[player] || 0) + 1;

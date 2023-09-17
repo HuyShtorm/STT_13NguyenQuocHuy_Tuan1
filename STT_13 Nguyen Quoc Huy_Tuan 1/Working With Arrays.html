@@ -12,22 +12,21 @@
 <body>
     <script>
         function checkDogs(dogsJulia, dogsKate) {
-            // 1. Create a shallow copy of Julia's array and remove cat ages
+           
             const correctedDogsJulia = dogsJulia.slice();
-            correctedDogsJulia.splice(0, 1); // Remove the first cat age
-            correctedDogsJulia.splice(-2); // Remove the last two cat ages
-
-            // 2. Create an array with both Julia's (corrected) and Kate's data
+            correctedDogsJulia.splice(0, 1); 
+            correctedDogsJulia.splice(-2); 
+            
             const allDogs = [...correctedDogsJulia, ...dogsKate];
 
-            // 3. For each remaining dog, log whether it's an adult or a puppy
+       
             allDogs.forEach((age, index) => {
                 const dogType = age >= 3 ? 'adult' : 'puppy';
                 console.log(`Dog number ${index + 1} is an ${dogType}, and is ${age} years old`);
             });
         }
 
-        // Test data
+       
         const data1Julia = [3, 5, 2, 12, 7];
         const data1Kate = [4, 1, 15, 8, 3];
         const data2Julia = [9, 16, 6, 8, 3];
